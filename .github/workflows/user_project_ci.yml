@@ -199,6 +199,15 @@ jobs:
             make $word
           done
           rm -rf openlane/user_proj_example/runs openlane/user_project_wrapper/runs pdk openlane_src caravel mgmt_core_wrapper timing-scripts mpw_precheck
+      
+      - name: Upload Linter Log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+           name: verilator-linter-log
+           path: |
+            openlane/user_proj_example/runs/*/logs/synthesis/linter.log
+           if-no-files-found: warn
 
       - name: Create reproducible
         if: failure()
