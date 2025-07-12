@@ -105,10 +105,14 @@ jobs:
           sudo chown -R $USER:$USER ${{ env.CARAVEL_ROOT }}
           tar -xf /tmp/caravel.tar -C $CARAVEL_ROOT .
 
-      - name: Install dependencies
+      - name: Install dependencies (with volare)
         run: |
           sudo mkdir -p ${{ env.PDK_ROOT }}
           sudo chown -R $USER:$USER ${{ env.PDK_ROOT }}
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install volare
           make ${{ matrix.targets }}
           if [[ "${{ env.dep_name }}" == "mgmt_core_wrapper" ]]; then
             cd ${{ env.dep_root }}
