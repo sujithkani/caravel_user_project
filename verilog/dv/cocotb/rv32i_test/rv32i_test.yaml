@@ -1,1 +1,9 @@
 
+module: user_proj_example
+rtl:
+  - ../../../rtl/user_proj_example.v
+  - ../../../rtl/rv32i_core.v
+  - ../../../rtl/simple_ram.v
+
+tb:
+  cocotb: test_user_proj_example.py
