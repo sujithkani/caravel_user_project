@@ -194,10 +194,12 @@ jobs:
       - name: Harden using Openlane
         run: |
           python3 $GITHUB_WORKSPACE/.github/scripts/get_designs.py --design $GITHUB_WORKSPACE
-          for word in $(cat harden_sequence.txt); do
+          while IFS= read -r word; do
             echo "CURRENT_DESIGN=${word}" >> $GITHUB_ENV
-            make $word OPENLANE_ARGS="--skip_steps linter"
-          done
+            export CURRENT_DESIGN=$word
+            echo "Running OpenLane on $CURRENT_DESIGN"
+            make $CURRENT_DESIGN OPENLANE_ARGS="--skip_steps linter"
+          done < harden_sequence.txt
           rm -rf openlane/user_proj_example/runs openlane/user_project_wrapper/runs pdk openlane_src caravel mgmt_core_wrapper timing-scripts mpw_precheck
       
       - name: Upload Linter Log
