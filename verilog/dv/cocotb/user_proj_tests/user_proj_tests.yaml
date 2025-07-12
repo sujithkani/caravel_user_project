@@ -20,5 +20,4 @@ includes:
     - counter_wb/counter_wb.yaml
     - counter_la_reset/counter_la_reset.yaml
     - counter_la_clk/counter_la_clk.yaml
-
-
+    - rv32i_test/rv32i_test.yaml
