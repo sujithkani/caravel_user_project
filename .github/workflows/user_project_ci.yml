@@ -46,6 +46,7 @@ jobs:
         with:
           name: caravel-tarball
           path: /tmp/caravel.tar
+          if-no-files-found: error
   
   download_deps:
     runs-on: ubuntu-latest
@@ -96,6 +97,7 @@ jobs:
         with:
           name: caravel-tarball
           path: /tmp
+          if-no-files-found: error
 
       - name: Unpack caravel Tarball
         run: |
@@ -122,6 +124,7 @@ jobs:
         with:
           name: ${{ env.dep_name }}-tarball
           path: /tmp/${{ env.dep_name }}.tar
+          if-no-files-found: error
 
   hardening:
     timeout-minutes: 720
@@ -156,6 +159,7 @@ jobs:
         with:
           name: pdk-tarball
           path: /tmp
+          if-no-files-found: error
 
       - name: Unpack PDK Tarball
         run: |
@@ -168,6 +172,7 @@ jobs:
         with:
           name: openlane-tarball
           path: /tmp
+          if-no-files-found: error
 
       - name: Unpack openlane Tarball
         run: |
@@ -195,6 +200,7 @@ jobs:
           name: openlane-issue-reproducible
           path: |
             $GITHUB_WORKSPACE/issue_reproducible.tar
+          if-no-files-found: error
       
       - name: Tarball Design_${{ matrix.pdk }}
         run: |
@@ -205,6 +211,7 @@ jobs:
         with:
           name: design_${{ matrix.pdk }}-tarball
           path: /tmp/design_${{ matrix.pdk }}.tar
+          if-no-files-found: error
   
   RTL-verification:
     timeout-minutes: 720
@@ -239,6 +246,7 @@ jobs:
         with:
           name: pdk-tarball
           path: /tmp
+          if-no-files-found: error
 
       - name: Unpack PDK Tarball
         run: |
@@ -251,6 +259,7 @@ jobs:
         with:
           name: caravel-tarball
           path: /tmp
+          if-no-files-found: error
 
       - name: Unpack caravel Tarball
         run: |
@@ -263,6 +272,7 @@ jobs:
         with:
           name: mgmt_core_wrapper-tarball
           path: /tmp
+          if-no-files-found: error
 
       - name: Unpack mgmt_core_wrapper Tarball
         run: |
@@ -314,6 +324,7 @@ jobs:
         with:
           name: pdk-tarball
           path: /tmp
+          if-no-files-found: error
 
       - name: Unpack PDK Tarball
         run: |
@@ -326,6 +337,7 @@ jobs:
         with:
           name: precheck-tarball
           path: /tmp
+          if-no-files-found: error
 
       - name: Unpack precheck Tarball
         run: |
@@ -338,6 +350,7 @@ jobs:
         with:
           name: design_${{ matrix.pdk }}-tarball
           path: /tmp
+          if-no-files-found: error
 
       - name: Unpack Design_${{ matrix.pdk }} Tarball
         run: |
@@ -392,6 +405,7 @@ jobs:
         with:
           name: pdk-tarball
           path: /tmp
+          if-no-files-found: error
 
       - name: Unpack PDK Tarball
         run: |
@@ -404,6 +418,7 @@ jobs:
         with:
           name: timing-scripts-tarball
           path: /tmp
+          if-no-files-found: error
 
       - name: Unpack timing-scripts Tarball
         run: |
@@ -416,6 +431,7 @@ jobs:
         with:
           name: design_${{ matrix.pdk }}-tarball
           path: /tmp
+          if-no-files-found: error
 
       - name: Unpack Design_${{ matrix.pdk }} Tarball
         run: |
@@ -428,6 +444,7 @@ jobs:
         with:
           name: caravel-tarball
           path: /tmp
+          if-no-files-found: error
 
       - name: Unpack Caravel Tarball
         run: |
@@ -440,6 +457,7 @@ jobs:
         with:
           name: mgmt_core_wrapper-tarball
           path: /tmp
+          if-no-files-found: error
 
       - name: Unpack mgmt_core_wrapper Tarball
         run: |
